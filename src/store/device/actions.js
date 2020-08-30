@@ -31,3 +31,9 @@ export const updateFilters = (filters) => ({
   type: UPDATE_FILTERS,
   filters,
 });
+
+export const UPDATE_SORT_BY = 'UPDATE_SORT_BY';
+export const updateSortBy = (sortBy) => ({
+  type: UPDATE_SORT_BY,
+  sortBy,
+});

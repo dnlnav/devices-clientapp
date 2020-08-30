@@ -5,9 +5,9 @@ export const TYPE_OPTIONS = {
 };
 
 export const SORT_OPTIONS = {
-  NAME: 'System name',
-  CAPACITY: 'HDD Capacity',
-  NONE: 'None',
+  NONE: { key: 'NONE', value: 'None' },
+  NAME: { key: 'NAME', value: 'System Name' },
+  CAPACITY: { key: 'CAPACITY', value: 'HDD Capacity' },
 };
 
 export const MODALS = {
