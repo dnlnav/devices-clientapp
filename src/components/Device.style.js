@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorPalette } from '../utils/styles';
+import { colorPalette, mq } from '../utils/styles';
 
 export const StyledDevice = styled.div`
   border-bottom: 1px solid ${colorPalette.gray.normal};
@@ -27,5 +27,10 @@ export const StyledDevice = styled.div`
   .actions {
     display: flex;
     column-gap: 1rem;
+
+    ${mq.max.sm} {
+      flex-direction: column;
+      row-gap: 1rem;
+    }
   }
 `;

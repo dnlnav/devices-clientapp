@@ -30,27 +30,31 @@ function Filters() {
 
   return (
     <StyledFilters>
-      <p>Device Type:</p>
-      <MultipleSelect
-        items={TYPE_OPTIONS}
-        selected={filters}
-        onChange={onFilterChange}
-        register={register}
-      />
-      <label htmlFor="sortBy">Sort By:</label>
-      <Select
-        name="sortBy"
-        id="sortBy"
-        defaultValue={sortBy}
-        register={register}
-        onChange={onSortByChange}
-      >
-        {Object.values(SORT_OPTIONS).map(({ key, value }) => (
-          <option value={key} key={key}>
-            {value}
-          </option>
-        ))}
-      </Select>
+      <div className="filter-group">
+        <p>Device Type:</p>
+        <MultipleSelect
+          items={TYPE_OPTIONS}
+          selected={filters}
+          onChange={onFilterChange}
+          register={register}
+        />
+      </div>
+      <div className="filter-group">
+        <label htmlFor="sortBy">Sort By:</label>
+        <Select
+          name="sortBy"
+          id="sortBy"
+          defaultValue={sortBy}
+          register={register}
+          onChange={onSortByChange}
+        >
+          {Object.values(SORT_OPTIONS).map(({ key, value }) => (
+            <option value={key} key={key}>
+              {value}
+            </option>
+          ))}
+        </Select>
+      </div>
       <StyledPrimaryButton onClick={onAddDevice}>Add</StyledPrimaryButton>
     </StyledFilters>
   );

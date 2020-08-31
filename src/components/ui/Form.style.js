@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rgba, rem } from 'polished';
 
-import { colorPalette, boxShadow, insetBoxShadow } from '../../utils/styles';
+import { colorPalette, boxShadow } from '../../utils/styles';
 
 export const StyledForm = styled.form`
   display: grid;
@@ -58,10 +58,15 @@ export const StyledSelect = styled.div`
     ${inputStyles}
     width: 100%;
   }
+
   .select {
     cursor: pointer;
     position: relative;
-    width: ${rem(300)};
+    max-width: 30vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: ${rem(250)};
     z-index: 1;
   }
 
@@ -72,7 +77,7 @@ export const StyledSelect = styled.div`
     box-shadow: ${boxShadow[1]};
     padding-top: ${rem(5)};
     margin-top: ${rem(-5)};
-    width: ${rem(300)};
+    width: ${rem(250)};
 
     &.active {
       display: block;

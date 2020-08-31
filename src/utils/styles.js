@@ -23,7 +23,7 @@ export const boxShadow = [
 ];
 
 const minQuery = (breakpoint) => `@media(min-width: ${breakpoint}px)`;
-const maxQuery = (breakpoint) => `@media(min-width: ${breakpoint - 0.01}px)`;
+const maxQuery = (breakpoint) => `@media(max-width: ${breakpoint - 0.01}px)`;
 
 export const mq = {
   sm: minQuery(600),
