@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rgba, rem } from 'polished';
 
-import { colorPalette, boxShadow } from '../../utils/styles';
+import { colorPalette, boxShadow } from '../utils/styles';
 
 export const StyledForm = styled.form`
   display: grid;

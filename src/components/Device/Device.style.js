@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorPalette, mq } from '../utils/styles';
+import { colorPalette, mq } from '../../utils/styles';
 
 export const StyledDevice = styled.div`
   border-bottom: 1px solid ${colorPalette.gray.normal};

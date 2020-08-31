@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorPalette } from '../../utils/styles';
+import { colorPalette } from '../utils/styles';
 import { rem } from 'polished';
 
 const primaryButton = (color) => `

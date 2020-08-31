@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { TYPE_OPTIONS } from '../utils/labels';
-import { deviceStore } from '../store/device/store';
-import { openEditModal, openDeleteModal } from '../store/device/actions';
+import { TYPE_OPTIONS } from '../../utils/labels';
+import { deviceStore } from '../../store/device/store';
+import { openEditModal, openDeleteModal } from '../../store/device/actions';
 import {
   StyledOutlinedButton,
   StyledOutlinedAlertButton,
-} from './ui/Buttons.style';
+} from '../../styles/Buttons.style';
 import { StyledDevice } from './Device.style';
 
 function Device({ id, name, type, capacity }) {

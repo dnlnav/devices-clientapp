@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { deviceStore } from '../store/device/store';
-import { TYPE_OPTIONS, SORT_OPTIONS } from '../utils/labels';
+import { deviceStore } from '../../store/device/store';
+import { TYPE_OPTIONS, SORT_OPTIONS } from '../../utils/labels';
 import {
   updateFilters,
   updateSortBy,
   openAddModal,
-} from '../store/device/actions';
+} from '../../store/device/actions';
 import { useForm } from 'react-hook-form';
 import { StyledFilters } from './Filters.style';
-import { StyledPrimaryButton } from './ui/Buttons.style';
-import Select from './ui/Select';
-import MultipleSelect from './ui/MultipleSelect';
+import { StyledPrimaryButton } from '../../styles/Buttons.style';
+import Select from '../ui/Select';
+import MultipleSelect from '../ui/MultipleSelect';
 
 function Filters() {
   const [{ filters, sortBy }, dispatch] = useContext(deviceStore);

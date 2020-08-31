@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { deviceStore } from '../../store/device/store';
-import { closeModals } from '../../store/device/actions';
-import { deleteDeviceQuery } from '../../queries/device';
+import { deviceStore } from '../../../store/device/store';
+import { closeModals } from '../../../store/device/actions';
+import { deleteDeviceQuery } from '../../../queries/device';
 import { queryCache, useMutation } from 'react-query';
-import { StyledAlertButton, LabelButton } from '../ui/Buttons.style';
-import { StyledForm } from '../ui/Form.style';
-import { GET_DEVICES_QUERY_KEY } from '../../utils/labels';
+import { StyledAlertButton, LabelButton } from '../../../styles/Buttons.style';
+import { StyledForm } from '../../../styles/Form.style';
+import { GET_DEVICES_QUERY_KEY } from '../../../utils/labels';
 
 function DeleteDeviceModal({ data: { id, name } }) {
   // eslint-disable-next-line

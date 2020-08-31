@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { boxShadow } from '../../utils/styles';
+import { boxShadow } from '../../../utils/styles';
 import { rem } from 'polished';
 
 export const StyledModal = styled.div`

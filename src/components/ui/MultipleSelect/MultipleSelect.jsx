@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyledSelect } from './Form.style';
-import { ReactComponent as ExpandMore } from '../../svg/expand-more.svg';
-import { handleOutsideClick } from '../../utils/handleClick';
+import { StyledSelect } from '../../../styles/Form.style';
+import { ReactComponent as ExpandMore } from '../../../svg/expand-more.svg';
+import { handleOutsideClick } from '../../../utils/handleClick';
 
 function MultipleSelect({ items, selected, onChange, register }) {
   const [active, setActive] = useState(false);

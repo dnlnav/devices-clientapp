@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import Device from './Device';
-import { deviceStore } from '../store/device/store';
-import { useDeviceList } from '../hooks/deviceList';
-import Filters from './Filters';
+import Device from '../Device';
+import { deviceStore } from '../../store/device/store';
+import { useDeviceList } from '../../hooks/deviceList';
+import Filters from '../Filters';
 import { StyledList } from './List.style';
 
 function List() {

@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { TYPE_OPTIONS, GET_DEVICES_QUERY_KEY } from '../../utils/labels';
-import { deviceStore } from '../../store/device/store';
-import { closeModals } from '../../store/device/actions';
+import { TYPE_OPTIONS, GET_DEVICES_QUERY_KEY } from '../../../utils/labels';
+import { deviceStore } from '../../../store/device/store';
+import { closeModals } from '../../../store/device/actions';
 import { useMutation, queryCache } from 'react-query';
-import { addDeviceQuery, updateDeviceQuery } from '../../queries/device';
-import { StyledPrimaryButton, LabelButton } from '../ui/Buttons.style';
-import { StyledInput, StyledForm } from '../ui/Form.style';
-import Select from '../ui/Select';
+import { addDeviceQuery, updateDeviceQuery } from '../../../queries/device';
+import {
+  StyledPrimaryButton,
+  LabelButton,
+} from '../../../styles/Buttons.style';
+import { StyledInput, StyledForm } from '../../../styles/Form.style';
+import Select from '../../ui/Select';
 
 function AddUpdateDeviceModal({ data = {} }) {
   const { id, name, type, capacity } = data;
@@ -24,7 +27,6 @@ function AddUpdateDeviceModal({ data = {} }) {
   });
 
   const onSubmit = (data) => {
-    console.log({ data });
     const operationType = isUpdate ? updateDevice : addDevice;
     operationType(data);
     dispatch(closeModals());
@@ -75,7 +77,7 @@ function AddUpdateDeviceModal({ data = {} }) {
         name="capacity"
         id="add-device-capacity"
         defaultValue={capacity}
-        ref={register({ required: true })}
+        ref={register({ required: true, min: 0 })}
       />
       <div className="button-group">
         <LabelButton onClick={onCancel}>Cancel</LabelButton>

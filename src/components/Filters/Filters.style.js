@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { mq } from '../utils/styles';
-import { rem } from 'polished';
+import { mq } from '../../utils/styles';
 
 export const StyledFilters = styled.div`
   display: flex;
@@ -16,7 +15,7 @@ export const StyledFilters = styled.div`
     display: flex;
     flex-direction: column;
 
-    ${mq.sm}{
+    ${mq.sm} {
       column-gap: 0.5rem;
       align-items: center;
       flex-direction: row;
@@ -24,9 +23,8 @@ export const StyledFilters = styled.div`
     }
   }
 
-    p {
-      margin: 0;
-    }
+  p {
+    margin: 0;
   }
 
   button {

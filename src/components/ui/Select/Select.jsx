@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyledSelect } from './Form.style';
-import { ReactComponent as ExpandMore } from '../../svg/expand-more.svg';
+import { StyledSelect } from '../../../styles/Form.style';
+import { ReactComponent as ExpandMore } from '../../../svg/expand-more.svg';
 
 function Select({ children, register, ...props }) {
   return (
