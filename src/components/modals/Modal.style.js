@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { boxShadow, pxToRem } from '../../utils/styles';
+import { boxShadow } from '../../utils/styles';
+import { rem } from 'polished';
 
 export const StyledModal = styled.div`
   display: flex;
@@ -15,10 +16,10 @@ export const StyledModal = styled.div`
   .content-wrapper {
     background-color: white;
     box-shadow: ${boxShadow[2]};
-    border-radius: ${pxToRem(4)};
+    border-radius: ${rem(4)};
     padding: 2rem;
     width: 90%;
 
-    max-width: ${pxToRem(600)};
+    max-width: ${rem(600)};
   }
 `;

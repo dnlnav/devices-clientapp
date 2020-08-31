@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import { StyledFilters } from './Filters.style';
 import { StyledPrimaryButton } from './ui/Buttons.style';
 import Select from './ui/Select';
+import MultipleSelect from './ui/MultipleSelect';
 
 function Filters() {
   const [{ filters, sortBy }, dispatch] = useContext(deviceStore);
@@ -27,32 +28,15 @@ function Filters() {
 
   const onAddDevice = () => dispatch(openAddModal());
 
-  const getFiltersText = () => {
-    if (filters.length === Object.keys(TYPE_OPTIONS).length) return 'All';
-    if (filters.length > 0)
-      return filters.map((f) => TYPE_OPTIONS[f]).join(', ');
-    return 'None';
-  };
-
   return (
     <StyledFilters>
-      <p>Device Type: {getFiltersText()}</p>
-      <div>
-        {Object.entries(TYPE_OPTIONS).map(([value, label]) => (
-          <label htmlFor={value} key={value}>
-            <input
-              type="checkbox"
-              name="filters"
-              value={value}
-              id={value}
-              ref={register}
-              defaultChecked={filters.includes(value)}
-              onChange={onFilterChange}
-            />
-            {label}
-          </label>
-        ))}
-      </div>
+      <p>Device Type:</p>
+      <MultipleSelect
+        items={TYPE_OPTIONS}
+        selected={filters}
+        onChange={onFilterChange}
+        register={register}
+      />
       <label htmlFor="sortBy">Sort By:</label>
       <Select
         name="sortBy"

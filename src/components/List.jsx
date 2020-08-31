@@ -4,10 +4,10 @@ import { deviceStore } from '../store/device/store';
 import { useDeviceList } from '../hooks/deviceList';
 import Filters from './Filters';
 import styled from 'styled-components';
-import { pxToRem } from '../utils/styles';
+import { rem } from 'polished';
 
 const StyledList = styled.div`
-  max-width: ${pxToRem(960)};
+  max-width: ${rem(960)};
   margin: 4rem auto;
 `;
 

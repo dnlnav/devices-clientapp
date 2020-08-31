@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rgba, rem } from 'polished';
 
-import { colorPalette } from '../../utils/styles';
+import { colorPalette, boxShadow } from '../../utils/styles';
 
 export const StyledForm = styled.form`
   display: grid;
@@ -53,8 +53,48 @@ export const StyledSelect = styled.div`
     transform: translateY(-50%);
   }
 
-  select {
+  select,
+  .select {
     ${inputStyles}
     width: 100%;
+  }
+  .select {
+    cursor: pointer;
+    position: relative;
+    width: ${rem(300)};
+    z-index: 1;
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: ${boxShadow[1]};
+    padding-top: ${rem(5)};
+    margin-top: ${rem(-5)};
+    width: ${rem(300)};
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .dropdown-option {
+    display: block;
+    padding: 0.75rem;
+    border-bottom: 1px solid ${colorPalette.gray.normal};
+
+    &:hover {
+      background-color: ${rgba(colorPalette.primary.normal, 0.15)};
+    }
+
+    &.selected {
+      color: white;
+      background-color: ${colorPalette.primary.light};
+    }
+
+    input {
+      display: none;
+    }
   }
 `;

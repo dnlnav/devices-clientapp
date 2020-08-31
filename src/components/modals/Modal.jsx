@@ -4,6 +4,7 @@ import { MODALS } from '../../utils/labels';
 import AddUpdateDeviceModal from './AddUpdateDevice';
 import DeleteDeviceModal from './DeleteDevice';
 import { StyledModal } from './Modal.style';
+import { closeModals } from '../../store/device/actions';
 
 const availableModals = {
   [MODALS.ADD_UPDATE_DEVICE]: AddUpdateDeviceModal,
@@ -11,11 +12,17 @@ const availableModals = {
 };
 
 function Modal() {
-  const [state] = useContext(deviceStore);
+  const [state, dispatch] = useContext(deviceStore);
   const ModalContent = availableModals[state.openModal];
+
+  const onClickOutside = () => dispatch(closeModals());
+
   return ModalContent ? (
-    <StyledModal>
-      <div className="content-wrapper">
+    <StyledModal onClick={onClickOutside}>
+      <div
+        className="content-wrapper"
+        onClick={(event) => event.stopPropagation()}
+      >
         <ModalContent data={state.selectedDeviceData} />
       </div>
     </StyledModal>

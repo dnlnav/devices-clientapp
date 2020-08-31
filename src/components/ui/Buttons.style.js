@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { colorPalette, pxToRem } from '../../utils/styles';
+import { colorPalette } from '../../utils/styles';
+import { rem } from 'polished';
 
 export const StyledPrimaryButton = styled.button`
   background-color: ${colorPalette.primary.normal};
   border: 1px solid ${colorPalette.primary.normal};
-  border-radius: ${pxToRem(4)};
+  border-radius: ${rem(4)};
   padding: 0.5rem 1.5rem;
   color: white;
 
@@ -16,7 +17,7 @@ export const StyledPrimaryButton = styled.button`
 export const StyledAlertButton = styled.button`
   background-color: ${colorPalette.alert.normal};
   border: 1px solid ${colorPalette.alert.normal};
-  border-radius: ${pxToRem(4)};
+  border-radius: ${rem(4)};
   padding: 0.5rem 1.5rem;
   color: white;
 
@@ -28,7 +29,7 @@ export const StyledAlertButton = styled.button`
 export const StyledOutlinedButton = styled.button`
   border: 1px solid ${colorPalette.primary.normal};
   background-color: transparent;
-  border-radius: ${pxToRem(4)};
+  border-radius: ${rem(4)};
   padding: 0.5rem 1.5rem;
   color: ${colorPalette.primary.normal};
 
