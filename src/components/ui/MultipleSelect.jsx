@@ -8,7 +8,7 @@ function MultipleSelect({ items, selected, onChange, register }) {
   const dropdownRef = useRef();
 
   const getSelectedText = () => {
-    if (selected.length === items.length) return 'All';
+    if (selected.length === Object.keys(items).length) return 'All';
     if (selected.length > 0)
       return selected.map((key) => items[key]).join(', ');
     return 'None';

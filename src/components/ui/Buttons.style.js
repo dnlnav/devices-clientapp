@@ -2,39 +2,61 @@ import styled from 'styled-components';
 import { colorPalette } from '../../utils/styles';
 import { rem } from 'polished';
 
-export const StyledPrimaryButton = styled.button`
-  background-color: ${colorPalette.primary.normal};
-  border: 1px solid ${colorPalette.primary.normal};
+const primaryButton = (color) => `
+  background-color: ${colorPalette[color].normal};
+  border: 1px solid ${colorPalette[color].normal};
   border-radius: ${rem(4)};
   padding: 0.5rem 1.5rem;
   color: white;
 
   &:hover {
-    background-color: ${colorPalette.primary.dark};
+    background-color: ${colorPalette[color].dark};
   }
+`;
+
+export const StyledPrimaryButton = styled.button`
+  ${primaryButton('primary')}
 `;
 
 export const StyledAlertButton = styled.button`
-  background-color: ${colorPalette.alert.normal};
-  border: 1px solid ${colorPalette.alert.normal};
-  border-radius: ${rem(4)};
-  padding: 0.5rem 1.5rem;
-  color: white;
-
-  &:hover {
-    background-color: ${colorPalette.alert.dark};
-  }
+  ${primaryButton('alert')}
 `;
 
 export const StyledOutlinedButton = styled.button`
-  border: 1px solid ${colorPalette.primary.normal};
+  border: 1px solid ${colorPalette.primary.light};
   background-color: transparent;
   border-radius: ${rem(4)};
   padding: 0.5rem 1.5rem;
   color: ${colorPalette.primary.normal};
 
   &:hover {
-    background-color: ${colorPalette.primary.dark};
-    color: white;
+    border-color: ${colorPalette.primary.dark};
+    color: ${colorPalette.primary.dark};
+    font-weight: bold;
+  }
+`;
+
+export const StyledOutlinedAlertButton = styled.button`
+  border: 1px solid ${colorPalette.alert.normal};
+  background-color: transparent;
+  border-radius: ${rem(4)};
+  padding: 0.5rem 1.5rem;
+  color: ${colorPalette.alert.normal};
+
+  &:hover {
+    border-color: ${colorPalette.alert.dark};
+    color: ${colorPalette.alert.dark};
+    font-weight: bold;
+  }
+`;
+export const LabelButton = styled.button`
+  border: 0;
+  background-color: transparent;
+  border-radius: ${rem(4)};
+  margin: 0.5rem 1.5rem;
+  color: ${colorPalette.gray.dark};
+
+  &:hover {
+    font-weight: bold;
   }
 `;

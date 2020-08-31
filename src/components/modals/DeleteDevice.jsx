@@ -3,14 +3,15 @@ import { deviceStore } from '../../store/device/store';
 import { closeModals } from '../../store/device/actions';
 import { deleteDeviceQuery } from '../../queries/device';
 import { queryCache, useMutation } from 'react-query';
-import { StyledOutlinedButton, StyledAlertButton } from '../ui/Buttons.style';
+import { StyledAlertButton, LabelButton } from '../ui/Buttons.style';
 import { StyledForm } from '../ui/Form.style';
+import { GET_DEVICES_QUERY_KEY } from '../../utils/labels';
 
 function DeleteDeviceModal({ data: { id, name } }) {
   // eslint-disable-next-line
   const [_, dispatch] = useContext(deviceStore);
   const [deleteDevice] = useMutation(deleteDeviceQuery, {
-    onSuccess: () => queryCache.invalidateQueries('getDevices'),
+    onSuccess: () => queryCache.invalidateQueries(GET_DEVICES_QUERY_KEY),
   });
 
   const onDelete = () => {
@@ -24,7 +25,7 @@ function DeleteDeviceModal({ data: { id, name } }) {
       <h3 className="heading">Delete Device</h3>
       <p className="text">Are you sure you want to delete {name}?</p>
       <div className="button-group">
-        <StyledOutlinedButton onClick={onCancel}>Cancel</StyledOutlinedButton>
+        <LabelButton onClick={onCancel}>Cancel</LabelButton>
         <StyledAlertButton onClick={onDelete}>Continue</StyledAlertButton>
       </div>
     </StyledForm>

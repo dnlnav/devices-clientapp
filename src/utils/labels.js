@@ -14,3 +14,5 @@ export const MODALS = {
   ADD_UPDATE_DEVICE: 'addUpdateDevice',
   DELETE_DEVICE: 'deleteDevice',
 };
+
+export const GET_DEVICES_QUERY_KEY = 'getDevices';

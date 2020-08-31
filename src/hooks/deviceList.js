@@ -1,10 +1,11 @@
 import { useQuery } from 'react-query';
 import { getDevicesQuery } from '../queries/device';
 import { useFilters } from './filters';
+import { GET_DEVICES_QUERY_KEY } from '../utils/labels';
 
 export function useDeviceList() {
   const { isLoading, error, data } = useQuery(
-    ['getDevices', {}],
+    [GET_DEVICES_QUERY_KEY, {}],
     getDevicesQuery
   );
 

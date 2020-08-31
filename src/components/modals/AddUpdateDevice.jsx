@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { TYPE_OPTIONS } from '../../utils/labels';
+import { TYPE_OPTIONS, GET_DEVICES_QUERY_KEY } from '../../utils/labels';
 import { deviceStore } from '../../store/device/store';
 import { closeModals } from '../../store/device/actions';
 import { useMutation, queryCache } from 'react-query';
 import { addDeviceQuery, updateDeviceQuery } from '../../queries/device';
-import { StyledPrimaryButton, StyledOutlinedButton } from '../ui/Buttons.style';
+import { StyledPrimaryButton, LabelButton } from '../ui/Buttons.style';
 import { StyledInput, StyledForm } from '../ui/Form.style';
 import Select from '../ui/Select';
 
@@ -15,12 +15,12 @@ function AddUpdateDeviceModal({ data = {} }) {
 
   // eslint-disable-next-line
   const [_, dispatch] = useContext(deviceStore);
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setValue, getValues } = useForm();
   const [addDevice] = useMutation(addDeviceQuery, {
-    onSuccess: () => queryCache.invalidateQueries('getDevices'),
+    onSuccess: () => queryCache.invalidateQueries(GET_DEVICES_QUERY_KEY),
   });
   const [updateDevice] = useMutation(updateDeviceQuery, {
-    onSuccess: () => queryCache.invalidateQueries('getDevices'),
+    onSuccess: () => queryCache.invalidateQueries(GET_DEVICES_QUERY_KEY),
   });
 
   const onSubmit = (data) => {
@@ -30,6 +30,8 @@ function AddUpdateDeviceModal({ data = {} }) {
     dispatch(closeModals());
   };
   const onCancel = () => dispatch(closeModals());
+
+  const onNameChange = () => setValue('name', getValues('name').toUpperCase());
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -48,6 +50,7 @@ function AddUpdateDeviceModal({ data = {} }) {
         type="text"
         id="add-device-name"
         name="name"
+        onChange={onNameChange}
         defaultValue={name}
         ref={register({ required: true })}
       />
@@ -75,7 +78,7 @@ function AddUpdateDeviceModal({ data = {} }) {
         ref={register({ required: true })}
       />
       <div className="button-group">
-        <StyledOutlinedButton onClick={onCancel}>Cancel</StyledOutlinedButton>
+        <LabelButton onClick={onCancel}>Cancel</LabelButton>
         <StyledPrimaryButton type="submit">Continue</StyledPrimaryButton>
       </div>
     </StyledForm>

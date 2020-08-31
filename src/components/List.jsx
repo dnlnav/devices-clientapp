@@ -3,13 +3,7 @@ import Device from './Device';
 import { deviceStore } from '../store/device/store';
 import { useDeviceList } from '../hooks/deviceList';
 import Filters from './Filters';
-import styled from 'styled-components';
-import { rem } from 'polished';
-
-const StyledList = styled.div`
-  max-width: ${rem(960)};
-  margin: 4rem auto;
-`;
+import { StyledList } from './List.style';
 
 function List() {
   // eslint-disable-next-line
@@ -22,9 +16,11 @@ function List() {
   return (
     <StyledList>
       <Filters />
-      {deviceList?.map((device) => (
-        <Device {...device} key={device.id} />
-      ))}
+      <div className="list-wrapper">
+        {deviceList?.map((device) => (
+          <Device {...device} key={device.id} />
+        ))}
+      </div>
     </StyledList>
   );
 }
