@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
-import styled from '@emotion/styled';
 import { TYPE_OPTIONS } from '../utils/labels';
 import { deviceStore } from '../store/device/store';
 import { openEditModal, openDeleteModal } from '../store/device/actions';
-
-const StyledDevice = styled.div`
-  border: 1px solid #ccc;
-  padding: 1rem;
-`;
+import { StyledAlertButton, StyledPrimaryButton } from './ui/Buttons.style';
+import { StyledDevice } from './Device.style';
 
 function Device({ id, name, type, capacity }) {
   // eslint-disable-next-line
@@ -19,11 +15,15 @@ function Device({ id, name, type, capacity }) {
 
   return (
     <StyledDevice>
-      <p>{name}</p>
-      <p>{TYPE_OPTIONS[type] || ''}</p>
-      <p>{capacity} GB</p>
-      <button onClick={handleUpdate}>Edit</button>
-      <button onClick={handleDelete}>Delete</button>
+      <div className="content">
+        <p>{name}</p>
+        <p>{TYPE_OPTIONS[type] || ''}</p>
+        <p>{capacity} GB</p>
+      </div>
+      <div className="actions">
+        <StyledPrimaryButton onClick={handleUpdate}>Edit</StyledPrimaryButton>
+        <StyledAlertButton onClick={handleDelete}>Delete</StyledAlertButton>
+      </div>
     </StyledDevice>
   );
 }

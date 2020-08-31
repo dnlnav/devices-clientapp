@@ -1,8 +1,15 @@
 import React, { useContext } from 'react';
 import { deviceStore } from '../store/device/store';
 import { TYPE_OPTIONS, SORT_OPTIONS } from '../utils/labels';
-import { updateFilters, updateSortBy } from '../store/device/actions';
+import {
+  updateFilters,
+  updateSortBy,
+  openAddModal,
+} from '../store/device/actions';
 import { useForm } from 'react-hook-form';
+import { StyledFilters } from './Filters.style';
+import { StyledPrimaryButton } from './ui/Buttons.style';
+import Select from './ui/Select';
 
 function Filters() {
   const [{ filters, sortBy }, dispatch] = useContext(deviceStore);
@@ -18,6 +25,8 @@ function Filters() {
     dispatch(updateSortBy(newSortBy));
   };
 
+  const onAddDevice = () => dispatch(openAddModal());
+
   const getFiltersText = () => {
     if (filters.length === Object.keys(TYPE_OPTIONS).length) return 'All';
     if (filters.length > 0)
@@ -26,7 +35,7 @@ function Filters() {
   };
 
   return (
-    <div>
+    <StyledFilters>
       <p>Device Type: {getFiltersText()}</p>
       <div>
         {Object.entries(TYPE_OPTIONS).map(([value, label]) => (
@@ -45,11 +54,11 @@ function Filters() {
         ))}
       </div>
       <label htmlFor="sortBy">Sort By:</label>
-      <select
+      <Select
         name="sortBy"
         id="sortBy"
         defaultValue={sortBy}
-        ref={register}
+        register={register}
         onChange={onSortByChange}
       >
         {Object.values(SORT_OPTIONS).map(({ key, value }) => (
@@ -57,8 +66,9 @@ function Filters() {
             {value}
           </option>
         ))}
-      </select>
-    </div>
+      </Select>
+      <StyledPrimaryButton onClick={onAddDevice}>Add</StyledPrimaryButton>
+    </StyledFilters>
   );
 }
 

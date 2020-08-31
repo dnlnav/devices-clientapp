@@ -5,6 +5,9 @@ import { deviceStore } from '../../store/device/store';
 import { closeModals } from '../../store/device/actions';
 import { useMutation, queryCache } from 'react-query';
 import { addDeviceQuery, updateDeviceQuery } from '../../queries/device';
+import { StyledPrimaryButton, StyledOutlinedButton } from '../ui/Buttons.style';
+import { StyledInput, StyledForm } from '../ui/Form.style';
+import Select from '../ui/Select';
 
 function AddUpdateDeviceModal({ data = {} }) {
   const { id, name, type, capacity } = data;
@@ -21,6 +24,7 @@ function AddUpdateDeviceModal({ data = {} }) {
   });
 
   const onSubmit = (data) => {
+    console.log({ data });
     const operationType = isUpdate ? updateDevice : addDevice;
     operationType(data);
     dispatch(closeModals());
@@ -28,39 +32,53 @@ function AddUpdateDeviceModal({ data = {} }) {
   const onCancel = () => dispatch(closeModals());
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="hidden" name="id" value={id} ref={register({ required: true })} />
-      <h3>{isUpdate ? 'Edit' : 'Add'} Device</h3>
-      <label htmlFor=""></label>
-      <input
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      {isUpdate && (
+        <input
+          type="hidden"
+          name="id"
+          value={id}
+          ref={register({ required: true })}
+        />
+      )}
+      <h3 className="heading">{isUpdate ? 'Edit' : 'Add'} Device</h3>
+      <label htmlFor="add-device-name">System Name*</label>
+      <StyledInput
+        className={`${errors.name ? 'error' : ''}`}
         type="text"
+        id="add-device-name"
         name="name"
         defaultValue={name}
         ref={register({ required: true })}
       />
-      <label htmlFor=""></label>
-      <select
+      <label htmlFor="add-device-type">Type*</label>
+      <Select
+        className={`${errors.type ? 'error' : ''}`}
         name="type"
-        id=""
+        id="add-device-type"
         defaultValue={type}
-        ref={register({ require: true })}
+        register={register({ require: true })}
       >
         {Object.entries(TYPE_OPTIONS).map(([value, label]) => (
           <option key={value} value={value}>
             {label}
           </option>
         ))}
-      </select>
-      <label htmlFor=""></label>
-      <input
+      </Select>
+      <label htmlFor="add-device-capacity">HDD Capacity (GB)*</label>
+      <StyledInput
+        className={`${errors.capacity ? 'error' : ''}`}
         type="number"
         name="capacity"
+        id="add-device-capacity"
         defaultValue={capacity}
         ref={register({ required: true })}
       />
-      <button type="submit">Continue</button>
-      <button onClick={onCancel}>Cancel</button>
-    </form>
+      <div className="button-group">
+        <StyledOutlinedButton onClick={onCancel}>Cancel</StyledOutlinedButton>
+        <StyledPrimaryButton type="submit">Continue</StyledPrimaryButton>
+      </div>
+    </StyledForm>
   );
 }
 

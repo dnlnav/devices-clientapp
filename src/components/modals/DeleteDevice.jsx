@@ -3,6 +3,8 @@ import { deviceStore } from '../../store/device/store';
 import { closeModals } from '../../store/device/actions';
 import { deleteDeviceQuery } from '../../queries/device';
 import { queryCache, useMutation } from 'react-query';
+import { StyledOutlinedButton, StyledAlertButton } from '../ui/Buttons.style';
+import { StyledForm } from '../ui/Form.style';
 
 function DeleteDeviceModal({ data: { id, name } }) {
   // eslint-disable-next-line
@@ -18,12 +20,14 @@ function DeleteDeviceModal({ data: { id, name } }) {
   const onCancel = () => dispatch(closeModals());
 
   return (
-    <div>
-      <h3>Delete Device</h3>
-      <p>Are you sure you want to delete {name}?</p>
-      <button onClick={onDelete}>Continue</button>
-      <button onClick={onCancel}>Cancel</button>
-    </div>
+    <StyledForm>
+      <h3 className="heading">Delete Device</h3>
+      <p className="text">Are you sure you want to delete {name}?</p>
+      <div className="button-group">
+        <StyledOutlinedButton onClick={onCancel}>Cancel</StyledOutlinedButton>
+        <StyledAlertButton onClick={onDelete}>Continue</StyledAlertButton>
+      </div>
+    </StyledForm>
   );
 }
 
