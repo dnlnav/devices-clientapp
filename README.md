@@ -22,7 +22,7 @@ yarn install
 - Create a new `.env` file from the example file.
 
 ```bash
-cp .env.example. env
+cp .env.example .env
 ```
 
 - Use npm or yarn to start the client application. By default, it will run on port 8000 but you can change this in the `.env` file
